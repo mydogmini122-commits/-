@@ -4,7 +4,9 @@ import { RetirementData, CalculationResult, RoastResult } from "../types";
 
 export const getToxicAdvice = async (data: RetirementData, result: CalculationResult): Promise<RoastResult> => {
   // 修正後的寫法 (支援 Vite 環境)
-const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY || process.env.API_KEY || '' });
+const ai = new GoogleGenAI({ 
+  apiKey: import.meta.env.VITE_API_KEY || import.meta.env.VITE_GEMINI_API_KEY || process.env.API_KEY || '' 
+});
   
   const genderLabel = data.gender === 'male' ? '男性' : data.gender === 'female' ? '女性' : '中性/韭菜';
   
